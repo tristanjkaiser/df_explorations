@@ -1,29 +1,28 @@
 # df_explorations
 # By: Tristan Kaiser & Antonio Skilton
-# Last edited: 2/7/2017
+# Last edited: 2/8/2017
 
 #### Tristan's problem ####
 # Take an original column (letter) and extrapolate it into an existing set of columns
 # that reflect the possible values of the original column
 # ie.:
-# letter a b c d e
-#   a    1 0 0 0 0
-#   c    0 0 1 0 0
-#   e    0 0 0 0 1
-#   d    0 0 0 1 0
-#   b    0 1 0 0 0
+# letter a b c d e f
+#   a    1 0 0 0 0 0
+#   c    0 0 1 0 0 0
+#   e    0 0 0 0 1 0
+#   d    0 0 0 1 0 0
+#   b    0 1 0 0 0 0
 
 # This solution works, but goal is to turn it into a function so
 # it can be applied to other columns
 
 # Create data frame
-df <- data.frame(matrix(0, nrow = 100, ncol = 6))
-names(df) <- c("letter", "a", "b", "c", "d", "e")
-df$letter <- sample(letters[1:5], 100, TRUE)
-
+df2 <- data.frame(matrix(0, nrow = 100, ncol = 26))
+names(df2) <- c(sample(letters[1:26]))
+df2$letter <- sample(letters[1:5], 100, TRUE)
 # This works to apply a 1 in the appropriate column given the value of df$letter
 for(i in seq_along(df$letter)){
-  df[i, df$letter[[i]]] <- 1
+  df2[i, df2$letter[[i]]] <- 1
 }
 
 #### Antonio's Solution ####
@@ -50,4 +49,4 @@ fill_function <- function(df, column_name){
   return(final_df)
 }
 
-df2 <- fill_function(df, "letter")
+df3 <- fill_function(df, "letter")
